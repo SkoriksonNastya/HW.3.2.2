@@ -34,9 +34,9 @@ public class Main {
         System.out.println(collect1);
 
         var collect2 = persons.stream()
-                .filter(person -> person.getSex() == Sex.MAN && person.getAge() >= 18 && person.getAge() <= 65)
-                .filter(person -> person.getSex() == Sex.WOMAN && person.getAge() >= 18 && person.getAge() <= 60)
                 .filter(person -> person.getEducation() == Education.HIGHER)
+                .filter(person -> person.getAge() >= 18)
+                .filter(person -> person.getSex() == Sex.MAN && person.getAge() <= 65 || person.getSex() == Sex.WOMAN && person.getAge() <= 60)
                 .map(person -> person.getFamily())
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
